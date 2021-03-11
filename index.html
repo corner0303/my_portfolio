@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="近藤快のポートフォリオです">
+  <title>KONDOU KAI</title>
+  <link rel="shortcut icon" href="./img/my-img.jpg">
+  <!-- reset.css -->
+  <link rel="stylesheet" href="./css/reset.css">
+  <!-- drawer.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css"
+    media="screen and (max-width:767px)">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <!-- jquery & iScroll -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- バージョンが最新版になっています -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+  <!-- drawer.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+  <!-- GoogleFonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <!-- スライダーのためのファイルを読み込み-->
+  <link rel="stylesheet" type="text/css" href="./css/slick-theme.css" />
+  <link rel="stylesheet" type="text/css" href="./css/slick.css" />
+  <!-- wow -->
+  <link rel="stylesheet" href="./css/animate.css">
+  <script src="./js/wow.min.js"></script>
+  <!-- scroll-hint -->
+  <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+  <!-- orignal -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/animation.css">
+</head>
+
+<body class="drawer drawer--right">
+  <!-- ローディング画面 -->
+<div id="loading">
+  <div class="spinner">
+    <p id="loading-text">ローディング中！</p>
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+    <div class="bounce4"></div>
+    <div class="bounce5"></div>
+    <div class="bounce6"></div>
+    <div class="bounce7"></div>
+    <div class="bounce8"></div>
+  </div>
+</div>
+ 
+  <header role="banner" class="header animation-wrap" id="header">
+    <div class="container">
+      <!-- ハンバーガーボタン -->
+      <h1 class="header-ttl"><a href="#">My Portfolio</a></h1>
+      <button type="button" class="drawer-toggle drawer-hamburger">
+        <span class="drawer-hamburger-icon"></span>
+      </button>
+      <!-- ナビゲーションの中身 -->
+      <nav class="drawer-nav" role="navigation">
+        <ul class="drawer-menu">
+          <li class="drawer-menu-item"><a href="#introduce">Introduce</a></li>
+          <li class="drawer-menu-item"><a href="#advantage">Advantage</a></li>
+          <li class="drawer-menu-item"><a href="#works">Works</a></li>
+          <li class="drawer-menu-item"><a href="#myLevel">My Level</a></li>
+          <li class="drawer-menu-item"><a href="#price">Price</a></li>
+          <li class="drawer-menu-item is-sm"><a href="#question">Q & A</a></li>
+          <li class="drawer-menu-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <div class="mainvisual">
+    <div class="mainvisual-bg">
+      <div class="container">
+        <div class="section-ttl-wrap animation-wrap">
+          <div class="mainvisual-appear-block" id="scroll-js">
+            <div class="mainvisual-content">
+              <p class="mainvisual-lead"><span class="mainvisual-lead-inner">要望</span>にお応え、<br class="is-sm"><span
+                  class="mainvisual-lead-inner">LP•HP</span>を作成します</p>
+              <a href="#contact" class="link-btn wow fadeIn" id="mainvisual-btn">お問い合わせへ！</a>
+            </div>
+          </div>
+        </div>
+        <a href="#introduce" class="scroll-icon eng-font"><span class="scroll-icon-part"></span></a>
+      </div>
+    </div>
+  </div>
+  <section class="introduce" id="introduce">
+    <div class="container">
+      <div class="introduce-wrap">
+        <div class="section-ttl-wrap ">
+          <div class="is-trigger">
+            <h2 class="section-ttl">Introduce</h2>
+          </div>
+        </div>
+        <div class="introduce-content wow fadeInUp">
+          <div class="introduce-content-img"><img src="./img/my-img.jpg" alt="自分のイメージ画像です"></div>
+          <div class="introduce-content-body">
+            <div class="introduce-content-body-text eng-font">
+              <h2 class="introduce-content-body-myname">KONDOU KAI</h2>
+            </div>
+            <ul class="slider introduce-content-body-slider-items">
+              <li class="introduce-content-body-slider-item">
+                <h3 class="introduce-content-body-slider-item-ttl">きっかけ</h3>
+                <p class="introduce-content-body-slider-item-text">コロナ禍で、手に職がないと生きていけないと思い、本業の傍らプログラミングを勉強開始。現在は平日3時間休日7時間勉強している。</p>
+              </li>
+              <li class="introduce-content-body-slider-item">
+                <h3 class="introduce-content-body-slider-item-ttl">目標</h3>
+                <p class="introduce-content-body-slider-item-text">目標は実績を積むこと。「0から1を生み出す」ということの難しさを実感中。</p>
+              </li>
+              <li class="introduce-content-body-slider-item">
+                <h3 class="introduce-content-body-slider-item-ttl">鋼のメンタル</h3>
+                <p class="introduce-content-body-slider-item-text">
+                  中学生の頃にいじめられていた時に習得した、“鋼のメンタル”でちょっとやそっとのことでも折れないという長所がある。</p>
+              </li>
+              <li class="introduce-content-body-slider-item">
+                <h3 class="introduce-content-body-slider-item-ttl">趣味</h3>
+                <p class="introduce-content-body-slider-item-text">趣味は"新しいことを学ぶこと"。毎日コツコツ勉強していくのが大好き。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <section class="sec1" id="slider"> -->
+
+  <section class="advantage" id="advantage">
+    <div class="container">
+      <div class="section-ttl-wrap">
+        <div class="is-trigger">
+          <h2 class="section-ttl">Advantage</h2>
+        </div>
+      </div>
+      <!-- /.section-ttl-wrap -->
+      <div class="advantage-list">
+        <div class="advantage-item wow fadeInLeft">
+          <div class="advantage-item-header">
+            <div class="advantage-item-img">
+              <img src="./img/target.png" alt="的の画像です">
+            </div>
+            <!-- /.advantage-item-img -->
+          </div>
+          <!-- /.advantage-item-header -->
+          <div class="advantage-item-body">
+            <h3 class="advantage-item-ttl"><strong class="marker-ttl">閲覧者を飽きさせないサイト作り</strong></h3>
+            <!-- /.advantage-ttl -->
+            <div class="advantage-item-content">
+              <p class="advantage-item-text">
+                「ホームページがあっても、見ても売上が上がる訳が無い。」そんな悩みございませんか？
+                それは閲覧者が、<strong class="marker">“注目”</strong> してないから。
+                今、これを読んでいるということは、少なくとも最初のアニメーションで“注目”しましたよね。それです。それが、内容を見られるホームページというものです。
+                人は“動き”があるものは“見てしまう”のです。
+                最初で“注目”を与えることで最後まで読んでもらえるホームページ。それが私のこだわりポイントです。</p>
+            </div>
+            <!-- /.advantage-item-text -->
+          </div>
+          <!-- /.advantage-item-body -->
+
+        </div>
+        <div class="advantage-item wow fadeInRight">
+          <div class="advantage-item-header">
+            <div class="advantage-item-img">
+              <img src="./img/online_call.png" alt="リモート会議の画像です">
+            </div>
+            <!-- /.advantage-item-img -->
+          </div>
+          <!-- /.advantage-item-header -->
+          <div class="advantage-item-body">
+            <h3 class="advantage-item-ttl"><strong class="marker-ttl">リモート会議で柔軟な対応</strong></h3>
+            <!-- /.advantage-ttl -->
+            <div class="advantage-item-content">
+              <p class="advantage-item-text">
+                実際にお話をしてどのようなサイトを作りたいのか、どうやって販売につなげるか、などお客様と<strong class="marker">コミュニケーション</strong>を取ってより良いサイト作りに精進します
+              </p>
+            </div>
+            <!-- /.advantage-item-text -->
+          </div>
+          <!-- /.advantage-item-body -->
+
+        </div>
+        <div class="advantage-item wow fadeInLeft">
+          <div class="advantage-item-header">
+            <div class="advantage-item-img">
+              <img src="./img/attention.png" alt="注目を集めている画像です">
+            </div>
+            <!-- /.advantage-item-img -->
+
+          </div>
+          <!-- /.advantage-item-header -->
+          <div class="advantage-item-body">
+            <h3 class="advantage-item-ttl"><strong class="marker-ttl">圧倒的格安で</strong></h3>
+            <!-- /.advantage-ttl -->
+            <div class="advantage-item-content">
+              <p class="advantage-item-text">
+                「年末年始にはお金をあまり使いたくない...」<br>
+                そんな悩みあると思います。お任せください。
+                私の目的は“実務経験を積むこと”です。格安でも<strong class="marker">丁寧に最後までやりきる</strong>という精神で責任を持って対応いたします。
+              </p>
+            </div>
+            <!-- /.advantage-item-text -->
+          </div>
+          <!-- /.advantage-item-body -->
+
+        </div>
+        <!-- /.advantage-item -->
+        <div class="advantage-item wow fadeInRight">
+          <div class="advantage-item-header">
+            <div class="advantage-item-img">
+              <img src="./img/send.png" alt="メールを送信している画像です">
+            </div>
+            <!-- /.advantage-item-img -->
+
+          </div>
+          <!-- /.advantage-item-header -->
+          <div class="advantage-item-body">
+            <h3 class="advantage-item-ttl"><strong class="marker-ttl">【長期休み限定】即レスで円滑に対応</strong></h3>
+            <!-- /.advantage-ttl -->
+            <div class="advantage-item-content">
+              <p class="advantage-item-text">
+                長期休み限定ではございますが、即レスが可能です。朝8時から夜の23時までの間は <strong class="marker">1時間以内</strong>
+                に返信をします。直ぐに返信をし、円滑に作業を進めていきたいけるよう精一杯努力します。
+              </p>
+            </div>
+            <!-- /.advantage-item-text -->
+          </div>
+          <!-- /.advantage-item-body -->
+
+        </div>
+        <!-- /.advantage-item -->
+      </div>
+      <!-- /.advantage -->
+    </div>
+    <!-- /.container -->
+  </section>
+  <!-- /.advantage -->
+  <!-- </section> -->
+  <section class="works" id="works">
+    <div class="container">
+      <div class="section-ttl-wrap ">
+        <div class="is-trigger">
+          <h2 class="section-ttl">Works</h2>
+        </div>
+        <ul class="works-list">
+          <li class="work-item wow fadeInLeft">
+            <a href="https://corner0303.github.io/my-portfolio-daily1/" target="_blank" rel="noopener"
+              class="work-item-link">
+              <div class="work-item-img">
+                <img src="./img/デイトラ中級課題.png" alt="参考サイトの画像です">
+                <span class="work-item-category">デイトラ</span>
+                <div class="mask is-pc">
+                  <div class="caption">サイトをみる</div>
+                </div>
+              </div>
+              <div class="work-item-body">
+                <h3 class="work-item-ttl">デイトラ中級卒業課題</h3>
+                <p class="work-item-text">全体の配置を意識しつつ5日で完成させました。</p>
+              </div>
+            </a>
+          </li>
+          <li class="work-item wow fadeInUp">
+            <a href="https://corner0303.github.io/my-portfolio4/" class="work-item-link" target="_blank" rel="noopener">
+              <div class="work-item-img">
+                <img src="./img/デイトラ中級.png" alt="参考サイトの画像です">
+                <span class="work-item-category">デイトラ</span>
+                <div class="mask is-pc">
+                  <div class="caption">サイトをみる</div>
+                </div>
+              </div>
+              <div class="work-item-body">
+                <h3 class="work-item-ttl">デイトラ 中級編のサイト</h3>
+                <p class="work-item-text">TAB、NEWSのレイアウトにこだわりました。</p>
+              </div>
+            </a>
+          </li>
+          <li class="work-item wow fadeInRight">
+            <a href="https://corner0303.github.io/my-portfolio2.io/" class="work-item-link" target="_blank"
+              rel="noopener">
+              <div class="work-item-img">
+                <img src="./img/デイトラ中級復習課題.png" alt="参考サイトの画像です">
+                <span class="work-item-category">デイトラ</span>
+                <div class="mask is-pc">
+                  <div class="caption">サイトをみる</div>
+                </div>
+              </div>
+              <div class="work-item-body">
+                <h3 class="work-item-ttl">デイトラ中級復習課題</h3>
+                <p class="work-item-text">お問い合わせページは特にこだわりました。</p>
+              </div>
+            </a>
+          </li>
+          <li class="work-item wow fadeInLeft">
+            <a href="" class="work-item-link" target="_blank" rel="noopener">
+              <div class="work-item-img">
+                <img src="./img/card01.png" alt="サイトイメージです">
+                <span class="work-item-category">模写</span>
+                <div class="mask is-pc">
+                  <div class="caption">サイトをみる</div>
+                </div>
+              </div>
+              <div class="work-item-body">
+                <h3 class="work-item-ttl">○○のサイトを作りました</h3>
+                <p class="work-item-text">○○にこだわりました</p>
+              </div>
+            </a>
+          </li>
+          <li class="work-item wow fadeInUp">
+            <a href="" class="work-item-link" target="_blank" rel="noopener">
+              <div class="work-item-img">
+                <img src="./img/card01.png" alt="サイトイメージです">
+                <span class="work-item-category">模写</span>
+                <div class="mask is-pc">
+                  <div class="caption">サイトをみる</div>
+                </div>
+              </div>
+              <div class="work-item-body">
+                <h3 class="work-item-ttl">○○のサイト作りました</h3>
+                <p class="work-item-text">○○にこだわりました</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="my-level" id="myLevel">
+    <div class="container">
+      <div class="section-ttl-wrap ">
+        <div class="is-trigger">
+          <h2 class="section-ttl">My Level</h2>
+        </div>
+        <dl class="my-level-items">
+          <div class="my-level-item">
+            <dt class="my-level-item-ttl">
+              HTML&CSS
+            </dt>
+            <dd class="my-level-item-graph" id="html-graph">
+              <span class="is-graph-component-trigger">85%</span>
+              <div class="is-graph-trigger"></div>
+              <p class="my-level-item-info">デザインの通りのサイトを作ることを得意としています。またレスポンシブ対応やcssアニメーションなども扱えます。(グラフはcssアニメーションで作りました)</p>
+            </dd>
+          </div>
+          <div class="my-level-item">
+            <dt class="my-level-item-ttl">JavaScript</dt>
+            <dd class="my-level-item-graph" id="js-graph">
+              <span class="is-graph-component-trigger">70%</span>
+              <div class="is-graph-trigger"></div>
+              <p class="my-level-item-info">スクロール、スライダー、ハンバーガーメニューなどのアニメーションの実装で閲覧者に飽きないサイトを作ることができます。</p>
+            </dd>
+          </div>
+          <!-- <div class="my-level-item">
+            <dt class="my-level-item-ttl">PHP&WordPress</dt>
+            <dd class="my-level-item-graph" id="php-graph">
+              <span class="is-graph-component-trigger  ">50%</span>
+              <div class="is-graph-trigger"></div>
+              <p class="my-level-item-info">サイトをワードプレス化することができます。※学習中です。</p>
+            </dd>
+          </div> -->
+        </dl>
+      </div>
+    </div>
+  </section>
+  <section class="price" id="price">
+    <div class="container">
+      <div class="section-ttl-wrap">
+        <div class="is-trigger">
+          <h2 class="section-ttl">Price</h2>
+        </div>
+      </div>
+      <div class="table-wrap wow fadeInUp">
+        <table>
+          <tr>
+            <th width="150">メニュー</th>
+            <th>内容</th>
+            <th width="150">料金</th>
+          </tr>
+          <tr>
+            <td>コーディング
+              （LP）</td>
+            <td>全1ページのランディングページの制作。</td>
+            <td>&yen;5,000～</td>
+          </tr>
+          <tr>
+            <td>コーディング
+              （HP）</td>
+            <td>複数ページのホームページの制作。</td>
+            <td>&yen;5,000～<br><span class="td-part">＊1ページ当たり</span></td>
+          </tr>
+          <tr>
+            <td>コーディング<br>(トップページ)</td>
+            <td>トップページのコーディング。JavaScriptやjQueryなどの動的な部分も実装が可能です。</td>
+            <td>&yen;3,000～</td>
+          </tr>
+          <tr>
+            <td>コーディング<br>(下層ページ)</td>
+            <td>各コンテンツの下層ページを作成いたします。</td>
+            <td>&yen;3,000～</td>
+          </tr>
+          <tr>
+            <td>アニメーションのみ追加</td>
+            <td>このサイトにあるようなアニメーションを作成いたします</td>
+            <td>&yen;3,000～</td>
+          </tr>
+          <tr>
+            <td>レスポンシブ対応のみ</td>
+            <td>非レスポンシブサイトをレスポンシブ対応に致します。</td>
+            <td>&yen;2,000～</td>
+          </tr>
+        </table>
+        <div class="table-attention wow fadeInUp">
+          <span class="table-attention-text">＊上記は全てレスポンシブ対応込みです。</span> <!-- /.table-text -->
+        </div>
+        <!-- /.table-attention -->
+      </div>
+      <!-- /.table-wrap -->
+    </div>
+    <!-- /.container -->
+  </section>
+  <!-- /.price -->
+  <section class="question" id="question">
+    <div class="container">
+      <div class="section-ttl-wrap">
+        <div class="is-trigger">
+          <h2 class="section-ttl">Q & A</h2>
+        </div>
+      </div>
+      <dl class="question-items">
+        <div class="question-item wow fadeInUp">
+          <div class="question-item-q-wrap">
+            <span class="question-item-q-mark"></span>
+            <dt class="question-item-q">あなたに頼むメリットは何？</dt>
+            <span class="question-item-inner is-close"></span>
+          </div>
+          <div class="question-item-a-wrap">
+            <div class="question-item-a-content">
+              <span class="question-item-a-mark"></span>
+              <dd class="question-item-a">格安で頼めるということ、長期休みなので即レスでストレスのないやり取りができます。</dd>
+            </div>
+          </div>
+        </div>
+        <div class="question-item wow fadeInUp">
+          <div class="question-item-q-wrap">
+            <span class="question-item-q-mark"></span>
+            <dt class="question-item-q">ZOOMでの打ち合わせは可能？</dt>
+            <span class="question-item-inner is-close"></span>
+          </div>
+          <div class="question-item-a-wrap">
+            <div class="question-item-a-content">
+              <span class="question-item-a-mark"></span>
+              <dd class="question-item-a">勿論可能です。</dd>
+            </div>
+          </div>
+        </div>
+        <div class="question-item wow fadeInUp">
+          <div class="question-item-q-wrap">
+            <span class="question-item-q-mark"></span>
+            <dt class="question-item-q">継続的な依頼は可能？</dt>
+            <span class="question-item-inner is-close"></span>
+          </div>
+          <div class="question-item-a-wrap">
+            <div class="question-item-a-content">
+              <span class="question-item-a-mark"></span>
+              <dd class="question-item-a">できます。精一杯仕事をさせていただきます。
+              </dd>
+
+            </div>
+          </div>
+        </div>
+        <div class="question-item wow fadeInUp">
+          <div class="question-item-q-wrap">
+            <span class="question-item-q-mark"></span>
+            <dt class="question-item-q">納品までどれくらいかかりますか？</dt>
+            <span class="question-item-inner is-close"></span>
+          </div>
+          <div class="question-item-a-wrap">
+            <div class="question-item-a-content">
+              <span class="question-item-a-mark"></span>
+              <dd class="question-item-a">一週間ほどで納品することができます。</dd>
+            </div>
+          </div>
+        </div>
+      </dl>
+
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-ttl-wrap">
+        <div class="is-trigger">
+          <h2 class="section-ttl">Contact</h2>
+        </div>
+      </div>
+      <div class="contact-flip-wrap wow fadeInUp">
+        <div class="contact-flip trigger">
+          <div class="front flip">
+            <button class="is-open eng-font">OPEN CONTACT</button>
+            <div class="contact-messege -success" id="is-success">
+              <p class="contact-messege-text">送信が完了できました！返信をお待ちください！</p>
+            </div>
+            <div class="contact-messege -error" id="is-error">
+              <p class="contact-messege-text">送信に失敗しました。ページを更新して再度送信お願いします。</p>
+            </div>
+          </div>
+          <div class="back">
+            <span class="flip is-close"><i class="fas fa-times"></i></span>
+            <form class="contact-form" id="is-form" method="POST"
+              action="https://docs.google.com/forms/u/7/d/e/1FAIpQLSesxVDHXF26Pz_EiOOF7T59-K4FlHUr4OEH_CARZVZb6NRdNw/formResponse">
+              <p class="contact-form-attention"><span class="contact-form-attention-inner">＊</span>は必須項目です。</p>
+              <dl>
+                <div class="contact-form-item">
+                  <dt class="contact-form-item-ttl">お名前<span class="contact-form-item-ttl-inner">＊</span>
+                  </dt>
+                  <dd class="contact-form-item-content">
+                    <input class="contact-form-item-input" type="text" placeholder="name" name="entry.1504178123"
+                      required>
+                  </dd>
+                </div>
+                <div class="contact-form-item">
+                  <dt class="contact-form-item-ttl">会社名
+                  </dt>
+                  <dd class="contact-form-item-content">
+                    <input class="contact-form-item-input" type="text" placeholder="company" name="entry.130905492">
+                  </dd>
+                </div>
+                <div class="contact-form-item">
+                  <dt class="contact-form-item-ttl">メールアドレス<span class="contact-form-item-ttl-inner">＊</span>
+                  </dt>
+                  <dd class="contact-form-item-content">
+                    <input class="contact-form-item-input" type="email" placeholder="forexample@gmail.com"
+                      name="emailAddress" required>
+                  </dd>
+                </div>
+                <div class="contact-form-item">
+                  <dt class="contact-form-item-ttl">お問い合わせ内容
+                    <span class="contact-form-item-ttl-inner">＊</span>
+                  </dt>
+                  <dd class="contact-form-item-content">
+                    <textarea name="entry.301877477" class="contact-form-item-textarea" placeholder="messege"
+                      required></textarea>
+                  </dd>
+                </div>
+              </dl>
+              <button type="submit" id="contact-btn" disabled>送信する</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-body eng-font">
+        <h2 class="footer-logo">My Portfolio</h2>
+        <p class="footer-name">KONDOU KAI</p>
+      </div>
+    </div>
+    <div class="to-top eng-font">
+      <div id="page-top">
+        <a href="#"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $('.drawer').drawer();
+    });
+  </script>
+  <script>
+    new WOW().init();
+  </script>
+  <script src="./js/slick.js"></script>
+  <script src="./js/slick.min.js"></script>
+  <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+    <script>
+          new ScrollHint('.table-wrap', {
+        i18n: {
+          scrollable: 'スクロールできます',
+          suggestiveShadow: true
+        }
+    });
+    </script>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>

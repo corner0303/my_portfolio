@@ -1,0 +1,1642 @@
+/* 色定義
+------------------------------------------------*/
+$themae-gradation-color: linear-gradient(to right, #b5f827 0%, #1c9800 100%);
+$sub-color: rgb(255, 166, 0);
+$text-color: #333;
+$bg-color1: #fff;
+$bg-color2: rgb(241, 241, 241);
+$bg-color3: rgb(65, 65, 65);
+$marker-color:rgb(255, 36, 36);
+$color-active: #dafdff; // ベース色
+$border-color: #00e73a;
+
+/*===============================================
+# レイヤー
+================================================*/
+
+$layer: (modal: 100, drawer: 40, floating: 30, header: 20, footer: 10, default: 1);
+
+//フォント
+$english-fonts: "Audiowide", cursive, "ヒラギノ明朝 ProN", serif;
+$base-font: "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", "ヒラギノ角ゴシック", YuGothic, "Yu Gothic", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+
+//header-hight
+$pc-header-hight: 72px;
+$sm-header-hight: 60px;
+
+/*===============================================
+# mixins
+=================================================*/
+
+//マップ型変数breakpointsを定義
+$breakpoints: ("sm": "screen and (max-width: 767px)", "pc": "screen and (min-width: 767px)");
+
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: pc) {
+    //map-get(マップ型変数, キー)で値を取得
+    @media #{map-get($breakpoints, $breakpoint)} {
+        //この中をカスタムできる
+        @content;
+    }
+}
+
+/*===============================================
+# comonn -全体に共通するスタイル
+=================================================*/
+
+@include mq("sm") {
+    .is-pc {
+        display: none;
+    }
+
+    //pcの時だけ表示 hiddenの逆
+}
+
+
+@include mq("pc") {
+    .is-sm {
+        display: none;
+    }
+
+    //spの時だけ表示 hiddenの逆
+}
+
+
+body {
+    font-size: 16px;
+    color: $text-color;
+    font-family: $base-font;
+    line-height: 1.6875;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    max-width: 1280px;
+    width: 100%;
+    padding: 0 40px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    @include mq(sm) {
+        padding: 0 15px;
+    }
+}
+
+section {
+    padding: 80px 0;
+}
+
+.section-ttl-wrap {
+    text-align: center;
+}
+
+.section-ttl {
+    color: #333;
+    font-size: 28px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    visibility: hidden;
+    font-weight: bold;
+    font-family: $english-fonts;
+
+    @include mq(pc) {
+        padding: 20px 90px;
+    }
+
+
+    @include mq(sm) {
+        padding: 10px 50px;
+    }
+
+
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: transparent;
+    }
+
+    &::after {
+        left: 0;
+        bottom: 0;
+        background: transparent;
+        border: solid 3px $border-color;
+        border-top: transparent;
+        border-right: transparent;
+    }
+
+    &::before {
+        content: "";
+        right: 0;
+        top: 0;
+        background: transparent;
+        border: solid 3px $border-color;
+        border-bottom: transparent;
+        border-left: transparent;
+    }
+}
+
+.is-visible {
+    visibility: visible !important;
+}
+
+@mixin link-btn-part {
+    width: 200px; //横幅
+    height: 60px; //高さ
+    display: flex; //横並びにする
+    align-items: center; //縦方向に中央揃え
+    justify-content: space-around; //余白を開けて等間隔に並ぶ
+    border: solid 1px $sub-color; //周りを囲むborder
+    color: $sub-color; //文字色
+    text-decoration: none; //下線を無くす
+    margin: 0 auto; //中央揃え
+    margin-top: 28px; //見やすくするための余白
+    transition: all 0.3s; //hoverした時に0.3sで変化させる
+
+    &::after,
+    &::before {
+        //共通するところはまとめよう！
+        content: ""; //中身
+        display: block;
+        width: 8px; //矢印の大きさの指定 みえない四角を作ります
+        height: 8px; // 矢印の大きさの指定
+        border-top: 2px solid $sub-color; // 矢印の太さの指定
+        border-left: 2px solid $sub-color; // 矢印の太さの指定
+        transition: all .3s; ////hoverした時に0.3sで変化させる
+   
+    }
+
+    &::before {
+        transform: rotate(-45deg); //角度調整
+   
+    }
+
+    &::after {
+        transform: rotate(135deg); //角度調整
+   
+    }
+}
+
+@mixin link-btn-part-hover {
+    &:hover {
+        background-color: $sub-color; //背景色変化
+        color: #fff; //文字色変化
+        font-weight: bold; //文字を太く
+
+        &::after,
+        &::before {
+            border-color: #fff; //矢印の色を白に
+       
+        }
+
+        &::before {
+            transform: rotate(135deg); //角度調整反対に
+       
+        }
+
+        &::after {
+            transform: rotate(-45deg); //角度調整反対に
+       
+        }
+    }
+}
+
+//link-btn
+.link-btn {
+    @include link-btn-part;
+    @include link-btn-part-hover;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.eng-font {
+    font-family: $english-fonts;
+}
+/*===============================================
+# loading
+================================================*/
+/* ローディング画面 */
+#loading {
+    width: 100vw;
+    height: 100vh;
+    transition: all 1s;
+    background:#b5f827;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
+
+  #loading-text{
+      font-weight: bold;
+      font-size: 20px;
+      color: #fff;
+  }
+  .spinner {
+    margin: 200px auto 0;
+    width:200px;
+    text-align: center;
+  }
+  
+  .spinner > div {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 2.0s infinite ease-in-out both;
+    animation: sk-bouncedelay 2.0s infinite ease-in-out both;
+  }
+  @mixin bounce($second) {
+    -webkit-animation-delay: $second;
+    animation-delay: $second;
+  }
+  .spinner .bounce1 {
+    @include bounce(.1s);
+  }
+  .spinner .bounce2 {
+    @include bounce(.2s);
+  }
+  .spinner .bounce3 {
+    @include bounce(.3s);
+  }
+  .spinner .bounce4 {
+    @include bounce(.4s);
+  }
+  .spinner .bounce5 {
+    @include bounce(.5s);
+  }
+  .spinner .bounce6 {
+    @include bounce(.6s);
+  }
+  .spinner .bounce7 {
+    @include bounce(.7s);
+  }
+  .spinner .bounce8 {
+    @include bounce(.8s);
+  }
+
+  
+  @-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+  }
+  
+  @keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    } 40% { 
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+    }
+  }
+  .loaded {
+    transform: scale(1.5);
+    opacity: 0;
+    visibility: hidden;
+  }
+/*===============================================
+# header
+================================================*/
+
+.header {
+    width: 100%;
+    height: 60px;
+    line-height: $sm-header-hight;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    background-color: $bg-color1;
+    box-shadow: 0px 5px 5px rgb(189, 189, 189);
+
+    .container {
+        display: flex;
+    }
+
+    @include mq(pc) {
+        height: $pc-header-hight;
+        line-height: 72px;
+    }
+}
+
+.header-ttl, .drawer-menu-item {
+    font-family: $english-fonts;
+}
+
+.header-ttl a {
+    color: $text-color;
+    font-size: 20px;
+
+    @include mq(pc) {
+        font-size: 25px;
+    }
+}
+
+.drawer-nav {
+    margin-left: auto;
+    z-index: 50;
+}
+
+.drawer-menu {
+    @include mq(pc) {
+        margin-left: auto;
+        display: flex;
+    }
+}
+
+.drawer-menu-item {
+    margin-left: 10px;
+    position: relative;
+
+    a {
+        display: inline-block;
+        color: $text-color;
+        transition: all .3s;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            -webkit-transform: scaleX(0);
+            -ms-transform: scaleX(0);
+            transform: scaleX(0);
+            background: $themae-gradation-color;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        @include mq(pc) {
+            &:hover {
+                &::after {
+                    -webkit-transform: scaleX(1);
+                    -ms-transform: scaleX(1);
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+
+    &:first-child{
+        margin-left: 0;
+    }
+}
+
+.drawer-open .drawer-toggle.drawer-hamburger {
+    width: 30px;
+    background-color: #fafafa;
+}
+
+.drawer-hamburger-icon,
+.drawer-hamburger-icon:after,
+.drawer-hamburger-icon:before {
+    @include mq(sm) {
+        background: $themae-gradation-color;
+    }
+}
+
+.drawer-open .drawer-hamburger-icon:after,
+.drawer-open .drawer-hamburger-icon:before {
+    background: linear-gradient(to right, #1c9800 0%, #b5f827 50%, #1c9800 100%);
+}
+
+.drawer-open .drawer-hamburger-icon {
+    background: transparent;
+}
+
+.drawer-overlay {
+    z-index: 1;
+}
+
+/*===============================================
+# mainvisual
+================================================*/
+
+.mainvisual {
+    background: url(../img/mainvisual.jpg) center (center / cover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @include mq(sm) {
+        height: calc(100vh - 60px);
+    }
+
+
+    @include mq(pc) {
+        height: calc(100vh - 72px);
+    }
+
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+    }
+}
+
+// #mainvisual-btn{
+//   visibility: hidden;
+// }
+
+.mainvisual-lead {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px #333;
+
+    @include mq(sm) {
+        font-size: 34px;
+    }
+
+
+    @include mq(pc) {
+        font-size: 40px;
+    }
+}
+
+.mainvisual-lead-inner {
+    color: $sub-color;
+}
+
+//scroll-icon
+
+.scroll-icon {
+    padding-top: 60px;
+}
+
+.scroll-icon .scroll-icon-part {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 4px;
+    height: 30px;
+
+    // border: 2px solid #fff;
+    border-radius: 50px;
+    box-sizing: border-box;
+    transform: translateX(-50%) translateY(5px);
+    background: linear-gradient(to top, #b5f827 0%, #1c9800 100%);
+
+    &:hover {
+        background: linear-gradient(to top, #b5f827 0%, #b5f827 25%, #1c9800 100%);
+    }
+
+    &::before {
+        content: "Scroll";
+        font-size: 30px;
+        color: #00e73a;
+        display: inline-block;
+        transform: translateX(-48%) translateY(-40px);
+        animation: sdb 2s infinite;
+    }
+}
+
+@-webkit-keyframes sdb {
+    0% {
+        -webkit-transform: translate(-48%, -70px);
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: translate(-48%, -40px);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes sdb {
+    0% {
+        transform: translate(-48%, -70px);
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    80% {
+        transform: translate(-48%, -40px);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+// .scroll-icon-text {
+//   display: inline-block;
+//   color: #fff;
+//   font-weight: bold;
+//   bottom: 10px;
+//   // transform: translateX(-50%) translateY(-30px);
+// }
+/*===============================================
+# introduce
+================================================*/
+.introduce {
+    background-color: $bg-color1;
+}
+
+.introduce-wrap {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.introduce-content-img {
+    width: 240px;
+
+    img {
+        border-radius: 50%;
+        border: solid 3px $border-color;
+    }
+
+    @include mq(sm) {
+        margin: 0 auto;
+    }
+}
+
+.introduce-content {
+    margin-top: 48px;
+
+    @include mq(pc) {
+        display: flex;
+    }
+}
+
+.introduce-content-body {
+    text-align: center;
+
+    @include mq(pc) {
+        margin-left: auto;
+        max-width: 250px;
+        width: 100%;
+        border: dashed 1px $border-color;
+    }
+}
+
+.introduce-content-body-myname {
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.introduce-content-body-slider-items {
+    font-weight: bold;
+}
+
+.introduce-content-body-slider-item-ttl {
+    background: #d6ffcd;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.introduce-content-body-slider-item-text {
+    text-align: left;
+    background: #e7fde2;
+}
+
+.slick-dots li {
+    margin-right: 20px;
+}
+
+.slick-dots li button:before {
+    content: '';
+    display: inline-block;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 10px;
+    border-radius: 50px;
+    text-align: center;
+    background-color: #00e73a;
+    opacity: .25;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*===============================================
+# advantage
+================================================*/
+.advantage {
+    background:linear-gradient(to bottom , rgb(241, 241, 241) 0% , rgb(241, 241, 241) 50%,rgb(65, 65, 65) 50% , rgb(65, 65, 65) 100%);
+
+    & .section-ttl{
+        padding: 10px 45px;
+    }
+}
+
+.advantage-list {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.advantage-item-header {
+    border-bottom: $border-color solid 1px ;
+}
+
+.advantage-item-img {
+    margin: 0 auto;
+    @include mq(pc) {
+        padding: 30px;
+    }
+    @include mq(sm) {
+        padding:10px;
+    }
+}
+
+.advantage-item {
+    max-width: 540px;
+    margin-right: auto;
+    background-color:$bg-color1 ;
+    border: solid 1px $border-color;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+    &:nth-child(2n) {
+        margin-right: 0;
+        margin-left: auto;
+    }
+}
+@mixin marker-animation($markerColor) {
+    background-image: linear-gradient(left, transparent 50%, $markerColor 50%);
+    background-repeat: repeat-x;
+    background-size: 200% .8em;
+    background-position: 0 .8em;
+    transition: all 3s ease ;
+}
+
+@mixin marker-animatioin-active {
+    background-position: -100% .8em;
+}
+.marker {
+    @include marker-animation($marker-color);
+}
+.marker-ttl {
+    @include marker-animation($sub-color);
+
+}
+
+.marker.-marker-active {
+    @include marker-animatioin-active();
+}
+.marker-ttl.-marker-active {
+    @include marker-animatioin-active();
+    background-position: -100% .7em;
+}
+
+.advantage-item-ttl {
+    // background-image: linear-gradient(left, transparent 50%, $markerColor 50%);
+    // background-repeat: repeat-x;
+    // background-size: 200% .8em;
+    // background-position: 0 .8em;
+    // transition: all 2s ease ;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 28px;
+}
+
+
+.advantage-item-ttl.-advantage-active{
+    background-position: -100% 1em;
+}
+.advantage-item-content{
+    font-size: 20px;
+    @include mq(sm) {
+        font-size: 18px;
+    }
+}
+
+/*===============================================
+# works
+================================================*/
+.works {
+    background-color: $bg-color2;
+}
+
+.works-list {
+    margin-top: 40px;
+
+    @include mq(pc) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.work-item {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+
+    @include mq(sm) {
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top: 12px;
+    }
+
+
+    @include mq(pc) {
+        max-width: calc(33% - 24px * 2 / 3);
+        width: 100%;
+        margin-top: 24px;
+        margin-right: 24px;
+        transition: transform .3s ease;
+
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        & .work-item-img .mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+
+            /* マスクを表示しない */
+            background-color: rgba(0, 0, 0, 0.4);
+            -webkit-transition: all 0.6s ease;
+            transition: all 0.3s ease;
+        }
+
+        &:hover .mask {
+            //ここだけはitem hoverで動作したいからこれじゃないといけない
+            opacity: 1;
+
+            /* マスクを表示する */
+            padding-left: 10px;
+
+            /* 右にずらす */
+        }
+
+        & .work-item-img .caption {
+            font-size: 130%;
+            color: #fff;
+            padding-top: 80px;
+            padding-left: 0px;
+        }
+    }
+}
+
+.work-item-img {
+    max-height: 195px;
+    overflow: hidden;
+    border: 1px solid $border-color;
+    position: relative;
+
+    // > img{
+    //   transition: transform .3s;
+    //   &:hover{
+    //     transform: scale(1.2);
+    //   }
+    // }
+}
+
+.work-item-category {
+    display: block;
+    background-color: $sub-color;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+}
+
+.work-item-ttl {
+    margin-top: 12px;
+    font-size: 18px;
+    color: $text-color;
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: $themae-gradation-color;
+    }
+}
+
+.work-item-text {
+    margin-top: 12px;
+    font-size: 14px;
+    color: $text-color;
+}
+
+/*===============================================
+# my-level
+================================================*/
+.my-level {
+    background: $bg-color3;
+    color: honeydew;
+
+    .section-ttl {
+        color: honeydew;
+    }
+}
+
+.my-level-items {
+    @include mq(sm) {
+        padding: 0 20px;
+    }
+}
+
+.my-level-item {
+    padding: 40px 0;
+
+    @include mq(sm) {
+        padding-bottom: 120px;
+    }
+}
+
+.my-level-item-ttl {
+    text-align: left;
+    font-family: $english-fonts;
+    font-size: 28px;
+}
+
+//percent
+$htmlCssPercent: 90%;
+$jsPercent: 70%;
+$phpWordPressPercent: 50%;
+
+.my-level-itme-graph-part {
+    display: block;
+    height: 50px;
+}
+
+.my-level-item-info {
+    text-align: left;
+    margin-top: 12px;
+}
+
+//graph-color
+$html-css-graph-color: linear-gradient(to right, #ffb700 0%, #ff7b00 100%);
+$js-graph-color: linear-gradient(to right, #f6ffa2 0%, #fffb00 100%);
+$php-graph-color: linear-gradient(to right, #00f7ff 0%, #001aff 100%);
+
+.html-css-graph {
+    background: $themae-gradation-color;
+    animation: myLevelGraphHtml 3s;
+    width: $htmlCssPercent;
+    background: $html-css-graph-color;
+}
+
+.JavaScript-graph {
+    background: $themae-gradation-color;
+    animation: myLevelGraphJs 3s;
+    width: $jsPercent;
+    background: $js-graph-color;
+}
+
+.php-wordPress-graph {
+    background: $themae-gradation-color;
+    animation: myLevelGraphPHPWordPress 3s;
+    width: $phpWordPressPercent;
+    background: $php-graph-color;
+}
+
+.my-level-item-graph {
+    display: block;
+    width: 100%;
+    height: 50px;
+    background: #e7e7e7;
+
+    // animation: aa 3s;
+    position: relative;
+}
+
+.my-level-item-graph-component {
+    position: absolute;
+    background: $sub-color;
+    color: #fff;
+    width: 42px;
+    top: -38px;
+
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -9px;
+        border-style: solid;
+        border-width: 10px 21px 0 21px;
+        border-color: $sub-color transparent transparent transparent;
+    }
+}
+
+.html-css-graph-component {
+    margin-left: 2%; //手動調整
+    left: $htmlCssPercent;
+    transform: translateX(-$htmlCssPercent);
+    animation: myLevelGraphComponentHtml 3s;
+
+    &:after {
+        left: $htmlCssPercent;
+        transform: translateX(-$htmlCssPercent);
+    }
+
+    @include mq(sm) {
+        margin-left: 4.3%;
+    }
+}
+
+.js-graph-component {
+    margin-left: 1.1%; //手動調整
+    left: $jsPercent;
+    transform: translateX(-$jsPercent);
+    animation: myLevelGraphComponentJs 3s;
+
+    @include mq(sm) {
+        margin-left: 3%; //手動調整
+    }
+
+
+    &:after {
+        left: $jsPercent;
+        transform: translateX(-$jsPercent);
+    }
+}
+
+.php-wordPress-graph-component {
+    left: $phpWordPressPercent;
+    transform: translateX(-$phpWordPressPercent);
+    animation: myLevelGraphComponentPHPWordPress 3s;
+
+    &:after {
+        left: $phpWordPressPercent;
+        transform: translateX(-$phpWordPressPercent);
+    }
+}
+
+@keyframes myLevelGraphHtml {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: $htmlCssPercent;
+    }
+}
+
+@keyframes myLevelGraphComponentHtml {
+    0% {
+        left: 0;
+        transform: translateX(0);
+        color: $sub-color;
+    }
+
+    50% {
+        color: $sub-color;
+    }
+
+    100% {
+        left: $htmlCssPercent;
+        transform: translateX(-$htmlCssPercent);
+        color: #fff;
+    }
+}
+
+@keyframes myLevelGraphJs {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: $jsPercent;
+    }
+}
+
+@keyframes myLevelGraphComponentJs {
+    0% {
+        left: 0;
+        transform: translateX(0);
+        color: $sub-color;
+    }
+
+    50% {
+        color: $sub-color;
+    }
+
+    100% {
+        left: $jsPercent;
+        transform: translateX(-$jsPercent);
+        color: #fff;
+    }
+}
+
+@keyframes myLevelGraphPHPWordPress {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: $phpWordPressPercent;
+    }
+}
+
+@keyframes myLevelGraphComponentPHPWordPress {
+    0% {
+        left: 0;
+        transform: translateX(0);
+        color: $sub-color;
+    }
+
+    50% {
+        color: $sub-color;
+    }
+
+    100% {
+        left: $phpWordPressPercent;
+        transform: translateX(-$phpWordPressPercent);
+        color: #fff;
+    }
+}
+/*===============================================
+# price
+================================================*/
+.price {
+    background-color:$bg-color3;
+    .section-ttl{
+        color: #fff;
+    }
+
+    .table-wrap{
+        max-width: 1000px;
+        margin:0 auto;
+        margin-top: 30px;
+        @include mq(sm) {
+            max-width:800px;
+            width: 100%;
+            overflow: scroll;
+            -ms-overflow-style: none;
+            position: relative;
+
+
+        }
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+    
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        font-weight: bold;
+        @include mq(sm) {
+            width:800px;
+        }
+    }
+    
+    th,td{
+        border: 1px solid #333;
+        vertical-align: middle;
+        padding: .4em 10px;
+    }
+
+    th {
+        background-color: #419198;
+        color: #fff;
+        font-weight: bold;
+
+        padding: 20px 0;
+    }
+    td{
+        background: #E9FBE5;
+    }
+
+    .td-part{
+        font-size: 15px;
+        font-weight: normal;
+    }
+    .table-attention-text{
+        color: rgb(223, 221, 221);
+        font-size: 14px;
+    }
+}
+/*===============================================
+# Q & A
+================================================*/
+.question-items {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.question-item {
+    border-bottom: #d4d4d4 1px solid;
+    text-align: left;
+    padding: 10px 0;
+    font-size: 18px;
+    padding: 5px;
+    font-weight: bold;
+    transition: all .1s;
+
+    &:hover {
+        background-color: $color-active;
+        transform: scale(1.05);
+    }
+}
+
+.question-item-q-wrap,
+.question-item-a-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.question-item-q {
+    flex: 0 1 80%;
+}
+
+.question-item-a {
+    flex: 0 1 80%;
+    margin-right: 40px;
+}
+
+.question-item-inner {
+    background: #1c9800;
+    margin-left: auto;
+    margin-right: 10px;
+    width: 30px;
+    height: 3px;
+    position: relative;
+    flex: 0 0 30px;
+
+    &.click.is-open:after {
+        content: "";
+        position: absolute;
+        transform: rotate(0deg);
+        display: inline-block;
+        background: #1c9800;
+        width: 30px;
+        height: 3px;
+        animation: is-close-animation 0.3s;
+    }
+
+    &.is-close:after {
+        content: "";
+        position: absolute;
+        transform: rotate(90deg);
+        display: inline-block;
+        background: #1c9800;
+        width: 30px;
+        height: 3px;
+        animation: is-open-animation 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+}
+
+@keyframes is-open-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    // 90% {
+    //   transform: rotate(110deg);
+    // }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes is-close-animation {
+    0% {
+        transform: rotate(90deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.question-item-a-wrap {
+    display: none;
+    margin-top: 20px;
+}
+
+.question-item-a-content {
+    display: flex;
+}
+
+.question-item-q-mark,
+.question-item-a-mark {
+    display: inline;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: bottom;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 20px;
+    position: relative;
+    flex: 0 0 30px;
+
+    &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+.question-item-q-mark {
+    background: #1c9800;
+
+    &:after {
+        content: "Q";
+    }
+}
+
+.question-item-a-mark {
+    background: $sub-color;
+
+    &:after {
+        content: "A";
+    }
+}
+
+/*===============================================
+# contact
+================================================*/
+//flip-mixin
+@mixin perspective($pixels) {
+    -webkit-perspective: $pixels;
+    -moz-perspective: $pixels;
+    -o-perspective: $pixels;
+    perspective: $pixels;
+}
+
+@mixin transition($speed) {
+    -webkit-transition: -webkit-transform $speed;
+    -moz-transition: -moz-transform $speed;
+    -o-transition: -o-transform $speed;
+    transition: transform $speed;
+}
+
+@mixin transform-style {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+@mixin transform($degrees) {
+    -webkit-transform: rotateY($degrees + deg);
+    -moz-transform: rotateY($degrees + deg);
+    -o-transform: rotateY($degrees + deg);
+    transform: rotateY($degrees + deg);
+}
+
+@mixin backface-visibility {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+//contact-code
+.contact {
+    background-color: $bg-color2;
+    height: 600px;
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 1em;
+        outline: none;
+        border: $border-color 1px solid;
+        border-radius: 5px;
+        transition: transform .3s;
+
+        &:focus {
+            background-color: $color-active;
+            transform: scale(1.05);
+        }
+    }
+}
+
+.contact-form-attention {
+    text-align: center;
+}
+
+.contact-form-attention-inner {
+    color: red;
+}
+
+.contact-flip-wrap {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 40px;
+
+    //追加
+    // float:center;
+    position: relative;
+
+    @include perspective(800px);
+
+    .contact-flip {
+        position: absolute;
+
+        @include transition(0.5s);
+        @include transform-style;
+
+        height: 100%;
+        width: 100%;
+
+        .front,
+        .back {
+            display: block;
+            margin: 0;
+            position: absolute;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+
+            @include backface-visibility;
+        }
+
+        .front {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            height: 600px;
+            background-color: $sub-color;
+            position: absolute;
+            cursor: pointer;
+            border-radius: 10px;
+
+            .is-open {
+                display: block;
+                width: 180px;
+                height: 80px;
+                line-height: 80px;
+                text-align: center;
+                background: transparent;
+                outline: none;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: #fff dashed 2px;
+            }
+        }
+
+        .back {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: $sub-color 1px dashed;
+
+            @include mq(sm) {
+                padding: 20px 20px;
+            }
+
+
+            @include mq(pc) {
+                padding: 40px 100px;
+            }
+
+
+            //追加
+            .is-close {
+                display: block;
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+
+                .fa-times {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: $sub-color;
+                    font-size: 20px;
+                }
+            }
+
+            @include transform(180);
+        }
+    }
+
+    .contact-flip.flipped {
+        @include transform(180);
+    }
+
+    .flipped .front {
+        position: absolute;
+        top: 0px;
+    }
+
+    &::after {
+        clear: both;
+    }
+}
+
+.contact-form-item {
+    margin-bottom: 10px;
+}
+
+.contact-form-item-ttl {
+    font-weight: bold;
+    display: inline-block;
+    background: $sub-color;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    border-radius: 9px;
+    color: #fff;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -9px;
+        left: 70%;
+        transform: translateX(-70%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 10px 0 10px;
+        border-color: $sub-color transparent transparent transparent;
+    }
+}
+
+.contact-form-item-ttl-inner {
+    color: red;
+}
+
+.contact-form-item-textarea {
+    resize: vertical;
+    height: 60px;
+}
+
+#contact-btn {
+    outline: none;
+    background-color: #fff;
+
+    @include link-btn-part;
+
+    &.-active {
+        @include link-btn-part-hover;
+    }
+
+    &.-active {
+        box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.3);
+        background-color: #fff9eb;
+        cursor: pointer;
+    }
+}
+
+.contact-messege {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+
+    &.-error {
+        color: red;
+    }
+}
+
+.is-send {
+    display: block;
+}
+
+/*===============================================
+# page-top
+================================================*/
+#page-top {
+    width: 100px;
+    height: 60px;
+    border: 3px solid $border-color;
+    border-radius: 100% 0% 0% 100% / 100% 0% 100% 0%;
+    opacity: 0.7;
+
+    @include mq(pc) {
+        position: fixed;
+        right: 0;
+        bottom: -200px;
+        transition: background-color .3s;
+
+        &:hover {
+            background-color: $color-active;
+        }
+    }
+
+
+    @include mq(sm) {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+#page-top a {
+    position: relative;
+    display: block;
+    width: 90px;
+    height: 60px;
+    text-decoration: none;
+}
+
+#page-top a::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f062';
+    font-size: 25px;
+    color: #00e73a;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -25px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+}
+
+#page-top a::after {
+    content: 'PAGE TOP';
+    font-size: 13px;
+    color: #00e73a;
+    position: absolute;
+    top: 38px;
+    bottom: 0;
+    right: 0;
+    left: 6px;
+    margin: auto;
+    text-align: center;
+}
+
+/*===============================================
+# footer
+================================================*/
+
+.footer {
+    padding-top: 140px;
+    background: $bg-color3;
+    color: #fff;
+
+    @include mq(sm) {
+        .to-top {
+            position: relative;
+        }
+    }
+}
+
+.footer-body {
+    margin-top: 30px;
+    padding: 80px 0 50px;
+}
+
+.footer-logo {
+    font-size: 36px;
+}
+
+.footer-name {
+    font-size: 20px;
+}
