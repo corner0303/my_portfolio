@@ -861,6 +861,8 @@ section {
   margin-top: 12px;
   font-size: 14px;
   color: #333;
+  text-align: left;
+  padding: 0 10px;
 }
 
 /*===============================================
